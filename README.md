@@ -3,7 +3,7 @@ How to Create a Blog Using Next.js and Contentful CMS
 
 In case you haven't heard, [**Next.JS**](https://nextjs.org/) is a **React JS** framework that super-optimizes website page speeds. When you host your Next website on [**Vercel's**](https://vercel.com) platform (for free), you get their automatic image optimization as well when you use Next's [**Next/Image**](https://nextjs.org/docs/api-reference/next/image) built-in component.
 
-Another key feaure of Next is the ability to generate static pages from external data sources using the `getStaticProps()` function. This dramatically speeds up data-driven websites, such as blogs because there is no back-end call to a server or CMS when visitors come to your site. The data is pulled from the database or CMS at build-time.
+Another key feature of Next is the ability to generate static pages from external data sources using the `getStaticProps()` function. This dramatically speeds up data-driven websites, such as blogs because there is no back-end call to a server or CMS when visitors come to your site. The data is pulled from the database or CMS at build-time.
 
 [**Contentful**](https://contentful.com) is a headless content management system (CMS). Headless simply means there is no front-end to display the content to the consumer. It's basically a database, but much easier to setup and maintain than a traditional relational database. Contentful provides a very easy-to-use API for fetching and managing content. They also support GraphQL queries if you're into that.
 
@@ -20,6 +20,10 @@ To create our blog, we're going to need the following prerequisites:
 - A Github account (free as well)
 - Node.JS and NPM installed on your PC
 - A development IDE, such as Visual Studio Code (also free)
+
+The complete repository for this tutorial can be found [Here](https://github.com/designly1/contentful-next-blog).
+
+And a demo of this tutorial app can be found [Here](https://designly-blog-example.vercel.app)
 
 Ok, let's get started!
 
@@ -190,10 +194,10 @@ export default MyApp
 
 ***
 
-Now we need to configure `next-sitemap` to generate our blog's `sitemap.xml`. Create a new file in the root directory called `next-sitemap.js`.
+Now we need to configure `next-sitemap` to generate our blog's `sitemap.xml`. Create a new file in the root directory called `next-sitemap.config.js`.
 
 ```js
-// next-sitemap.js
+// next-sitemap.config.js
 
 /** @type {import('next-sitemap').IConfig} */
 
@@ -252,9 +256,11 @@ Now we need to add the post-build script to `package.json`:
 
 ***
 
-Next, edit `next.site.config` in the root directory to look like this:
+Next, edit `next.config.js` in the root directory to look like this:
 
 ```js
+/* next.config.js */
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -335,7 +341,6 @@ img {
     flex-direction: column;
     gap: .5rem;
 }
-
 
 .tag {
     align-self: flex-start;
@@ -749,7 +754,6 @@ export default function PostBody({ content }) {
     const P = ({ children }) => <p className="blog-p">{children}</p>
     const Hr = () => <hr className="blog-hr" />
 
-
     return (
         <ReactMarkdown
             className='post-markdown'
@@ -1055,7 +1059,7 @@ export default PostDetails;
 
 ***
 
-Now restart the dev server with `npm run dev` and navigate to `http://localhost:3000/blog`. You should see your test post diplayed as a card. Click on the card and `next/router` should navigate you to the dynamic `[slug].js` page. Notice the progress bar and single-page app loading, which is the doing of `next/router`.
+Now restart the dev server with `npm run dev` and navigate to `http://localhost:3000/blog`. You should see your test post displayed as a card. Click on the card and `next/router` should navigate you to the dynamic `[slug].js` page. Notice the progress bar and single-page app loading, which is the doing of `next/router`.
 
 #### Step 5: Publish Your App on Vercel
 
