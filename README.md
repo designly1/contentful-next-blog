@@ -1,6 +1,3 @@
-How to Create a Blog Using Next.js and Contentful CMS
---------------
-
 In case you haven't heard, [**Next.JS**](https://nextjs.org/) is a **React JS** framework that super-optimizes website page speeds. When you host your Next website on [**Vercel's**](https://vercel.com) platform (for free), you get their automatic image optimization as well when you use Next's [**Next/Image**](https://nextjs.org/docs/api-reference/next/image) built-in component.
 
 Another key feature of Next is the ability to generate static pages from external data sources using the `getStaticProps()` function. This dramatically speeds up data-driven websites, such as blogs because there is no back-end call to a server or CMS when visitors come to your site. The data is pulled from the database or CMS at build-time.
